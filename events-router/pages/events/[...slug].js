@@ -18,13 +18,14 @@ function FilteredEventsPage() {
   const filteredYear = filterData[0];
   const filteredMonth = filterData[1];
 
+  //convert string into number
   const numYear = +filteredYear;
   const numMonth = +filteredMonth;
 
   if (
     isNaN(numYear) ||
     isNaN(numMonth) ||
-    numYear > 2030 ||
+    numYear > 2040 ||
     numYear < 2021 ||
     numMonth < 1 ||
     numMonth > 12
