@@ -32,6 +32,7 @@ export async function getStaticProps(context) {
   const data = JSON.parse(jsonData);
 
   if (!data) {
+    //redirect key to redirect to another page if error accessing database
     return {
       redirect: {
         destination: "/no-data",
@@ -40,6 +41,7 @@ export async function getStaticProps(context) {
   }
 
   if (data.products.length === 0) {
+    //return 404 error if this is true
     return { notFound: true };
   }
 
@@ -51,6 +53,8 @@ export async function getStaticProps(context) {
     },
     //regenerate page every 10 seconds, store new pages in cache to serve future requests
     revalidate: 10,
+    //return 404 error if this is true
+    notFound: false,
   };
 }
 
