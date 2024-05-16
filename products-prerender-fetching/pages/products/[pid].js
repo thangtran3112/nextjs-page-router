@@ -7,8 +7,7 @@ function ProductDetailPage(props) {
   const { loadedProduct } = props;
 
   //if product is not loaded yet, especially if the dynamic page is not pre-rendered
-  //when we have million of products, it would be impractical to getStaticPaths()
-  //for all products.
+  //this is required when `fallback : true`, and we do not need for `fallback: 'blocking'`
   if (!loadedProduct) {
     return <p>Loading...</p>;
   }
