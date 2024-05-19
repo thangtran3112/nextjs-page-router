@@ -8,7 +8,6 @@ function EventsSearch(props) {
   const monthInputRef = useRef();
 
   function submitHandler(event) {
-    //prevent app from sending http request and reloading the page, where we will lose our states
     event.preventDefault();
 
     const selectedYear = yearInputRef.current.value;
