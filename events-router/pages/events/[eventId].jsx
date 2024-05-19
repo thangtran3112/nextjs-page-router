@@ -1,10 +1,10 @@
-import { Fragment } from "react";
+import Head from "next/head";
 
 import { getEventById, getFeaturedEvents } from "../../helpers/api-util";
 import EventSummary from "../../components/event-detail/event-summary";
 import EventLogistics from "../../components/event-detail/event-logistics";
 import EventContent from "../../components/event-detail/event-content";
-import ErrorAlert from "../../components/ui/error-alert";
+// import ErrorAlert from "../../components/ui/error-alert";
 
 function EventDetailPage(props) {
   const event = props.selectedEvent;
@@ -18,7 +18,11 @@ function EventDetailPage(props) {
   }
 
   return (
-    <Fragment>
+    <>
+      <Head>
+        <title>{event.title}</title>
+        <meta name="description" content={event.description} />
+      </Head>
       <EventSummary title={event.title} />
       <EventLogistics
         date={event.date}
@@ -29,7 +33,7 @@ function EventDetailPage(props) {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
-    </Fragment>
+    </>
   );
 }
 
@@ -53,6 +57,8 @@ export async function getStaticPaths() {
 
   return {
     paths: paths,
+    // fallback: false, //return 404 page if static page is not found
+    // fallback: true, // when there is no static page, it will try to load server side value
     fallback: "blocking",
   };
 }
