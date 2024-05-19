@@ -1,5 +1,5 @@
-import { getFeaturedEvents } from "../helpers/api-util";
-import EventList from "../components/events/event-list";
+import { getFeaturedEvents } from '../helpers/api-util';
+import EventList from '../components/events/event-list';
 
 function HomePage(props) {
   return (
@@ -14,10 +14,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      events: featuredEvents,
+      events: featuredEvents
     },
-    revalidate: 1800,
-  };
+    revalidate: 1800
+  }
 }
 
 export default HomePage;
